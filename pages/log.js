@@ -34,26 +34,30 @@ const theme = createTheme({
 
 export async function getStaticProps(){
 
-    const unpaid = await fetch("https://undefxx.com/api/payments/unpaid",  {method: "GET", mode: "cors", headers: {propertyID : process.env.NEXT_PUBLIC_PROPERTY_ID}}).then(x => x.json())
-    const logData = await fetch("https://undefxx.com/api/payments/log",  {method: "GET", mode: "cors", headers: {propertyID : process.env.NEXT_PUBLIC_PROPERTY_ID}}).then(x => x.json())
+    const payments = await fetch("https://undefxx.com/api/p", {method: "GET", headers: { propertyID : process.env.NEXT_PUBLIC_PROPERTY_ID}}).then(x=> x.json());
 
     return{
-        props: {unpaid, logData},
+        props: {payments},
         revalidate: 1
     }
 }
 
 
 export default function Log(props){
+    const unpaid =  props.payments[process.env.NEXT_PUBLIC_PROPERTY_ID].unpaid
+    const processing =  props.payments[process.env.NEXT_PUBLIC_PROPERTY_ID].processing
+    const paid =  props.payments[process.env.NEXT_PUBLIC_PROPERTY_ID].paid
+    const logData = {... processing, ... paid }
+
     let links = [{label: "<---", href: "/"}, {label: "", href: "/"}]
 
-    for(let elem in props.unpaid) {
+    for(let elem in unpaid) {
         links.push({label: "", href: '/'})
     }
     links.push({label: "...", href: '/'})
 
-    const [rows, setRows] = useState(getRows(props.logData))
-    const [columns, setColumns] = useState([{field: "id", headerName:"id", width: 150}, {field: "status", headerName:"status", width: 150},  {field: "total", headerName: "total", width: 150, type: "number"}])
+    const [rows, setRows] = useState(getRows(logData))
+    const [columns, setColumns] = useState([{field: "name", headerName:"id", width: 150}, {field: "status", headerName:"status", width: 150},  {field: "total", headerName: "total", width: 150, type: "number"}])
 
 
     return(
@@ -70,8 +74,13 @@ export default function Log(props){
 
 function getRows(data) {
     let rows = []
-    for (let elem in data){
-        rows.push({id: data[elem].id, total: data[elem].total, status: data[elem].status })
+    for (let key in data){
+        if (data[key].status == "paid") {
+            data[key].status = "complete"
+        } else if (data[key].status == "processing") {
+            data[key].status = "in progress"
+        }
+        rows.push({id: key, name: data[key].name,total: data[key].amount, status: data[key].status })
     }
     return rows
 }

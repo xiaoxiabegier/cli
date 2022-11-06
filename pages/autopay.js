@@ -9,10 +9,7 @@ import "./styles/loginCards.css"
 
 export async function getStaticProps(){
 
-    const initialAutopayActive = await fetch("https://undefxx.com/api/info/autopay",  {method: "GET", mode: "cors", headers: {propertyID : process.env.NEXT_PUBLIC_PROPERTY_ID}}).then(x => x.json())
-    const emailAddresses = await fetch("https://undefxx.com/api/info/emailAddresses",  {method: "GET", mode: "cors", headers: {propertyID : process.env.NEXT_PUBLIC_PROPERTY_ID}}).then(x => x.json())
-    const phoneNumbers = await fetch("https://undefxx.com/api/info/phoneNumbers",  {method: "GET", mode: "cors", headers: {propertyID : process.env.NEXT_PUBLIC_PROPERTY_ID}}).then(x => x.json())
-
+    const info = await fetch("https://undefxx.com/api/info/autopay",  {method: "GET", mode: "cors", headers: {propertyID : process.env.NEXT_PUBLIC_PROPERTY_ID, includedFields: ""}}).then(x => x.json())
     return {
         props: { initialAutopayActive, emailAddresses, phoneNumbers},
         revalidate: 1
