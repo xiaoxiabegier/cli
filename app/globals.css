@@ -1,0 +1,43 @@
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--goldmanSansLight) ;
+}
+
+html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+.links{
+    margin-top: 23vh;
+    font-size: 65px;
+    text-align: center;
+}
+
+.dataGrid{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}

@@ -1,0 +1,1 @@
+cp -f verifyLicenseModified.js node_modules/@mui/x-license-pro/verifyLicense/verifyLicense.js

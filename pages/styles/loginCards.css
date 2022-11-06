@@ -1,0 +1,56 @@
+
+.grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:15px;
+}
+
+.card {
+    margin: 0.5rem;
+    padding: .5rem;
+    text-align: left;
+    color: inherit;
+    text-decoration: none;
+    border: .5px solid black;
+    border-radius: 10px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    max-width: 300px;
+    background: none;
+    font-family: var(--goldmanSansLight);
+}
+
+/*.card:hover,*/
+/*.card:focus,*/
+/*.card:active {*/
+/*    color: #0070f3;*/
+/*    border-color: #0070f3;*/
+/*    color: #A2AAAD;*/
+/*    border-color: #A2AAAD;*/
+
+/*}*/
+
+.card h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+}
+
+.card p {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+@media (prefers-color-scheme: dark) {
+    .card{
+        color: white;
+        border: .5px solid white;
+
+    }
+
+
+}
