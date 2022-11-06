@@ -2,13 +2,12 @@ import { initializeApp } from "firebase/app";
 import {getFirestore, collection, query, where, getDocs} from "firebase/firestore"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDPGmgTxlAsVkakZrGbs8NTF2r0RcWu_ig",
-    authDomain: "luminous-lambda-364207.firebaseapp.com",
-    projectId: "luminous-lambda-364207",
-    storageBucket: "luminous-lambda-364207.appspot.com",
-    messagingSenderId: "518969290682",
-    appId: "1:518969290682:web:d7be744cb378ec83d4f783"
+    apiKey: "AIzaSyAiGmFgzS1HJefVKV-r8El-t7q3kZYXccU",
+    authDomain: "cybernetic-stream.firebaseapp.com",
+    projectId: "cybernetic-stream",
+    storageBucket: "cybernetic-stream.appspot.com",
+    messagingSenderId: "134129148133",
+    appId: "1:134129148133:web:b0ba9c2912a0e3b116f40c"
 };
-
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 export const db = getFirestore()
